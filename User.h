@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "Validator.h"
 using namespace std;
 
 class User
@@ -49,18 +50,33 @@ class User
       return this->password;
     }
 
-    void setName(string name)
+    bool setName(string name)
     {
+      if (!Validator::isValidName(name))
+      {
+        return false;
+      }
       this->name = name;
+      return true;
     }
 
-    void setEmail(string email)
+    bool setEmail(string email)
     {
+      if (!Validator::isValidEmail(email))
+      {
+        return false;
+      }
       this->email = email;
+      return true;
     }
 
-    void setPassword(string password)
+    bool setPassword(string password)
     {
+      if (!Validator::isValidPassword(password))
+      {
+        return false;
+      }
       this->password = password;
+      return true;
     }
 };
